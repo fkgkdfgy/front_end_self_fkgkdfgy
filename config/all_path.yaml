@@ -1,1 +1,6 @@
 %YAML:1.0
+---
+
+DataLoader.IndexFile: 
+DataLoader.ImagePath.Left:
+DataLoader.ImagePath.Right: 
