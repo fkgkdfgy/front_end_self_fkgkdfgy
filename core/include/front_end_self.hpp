@@ -2,7 +2,7 @@
  * @Author: Liu Weilong
  * @Date: 2021-01-03 10:04:02
  * @LastEditors: Liu Weilong
- * @LastEditTime: 2021-01-05 08:20:56
+ * @LastEditTime: 2021-01-08 07:45:59
  * @Description: 
  */
 
@@ -44,22 +44,6 @@ class FrontEndSelf
     vector<cv::Point2d> pre_uv_, cur_uv_,forw_uv_;
     bool first_img_ = false;
     
-};
-
-class ImgDisplayer
-{
-    public:
-    
-    using features = vector<cv::Point2d>;
-    // interface 
-    void Run();
-    void ShowCurImg();
-    void SetCurImg(cv::Mat & img_l);
-    void SetCurImg(cv::Mat & img_l, features & feature_l);
-    void SetCurImg(cv::Mat & img_l,cv::Mat & img_r, features & feature_l, features & feature_r);
-
-    cv::Mat img_cur;
-    std::mutex img_lock_;
 };
 
 class FrontEndSelfOptions
