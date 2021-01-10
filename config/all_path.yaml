@@ -1,6 +1,8 @@
 %YAML:1.0
 ---
 
-DataLoader.IndexFile: 
-DataLoader.ImagePath.Left:
-DataLoader.ImagePath.Right: 
+DataLoader.IndexFile: "./app/EuRoC_TimeStamps/MH02.txt"
+DataLoader.ImagePath.Left: "/home/lwl/workspace/DataSet/MH02/mav0/cam0/data"
+DataLoader.ImagePath.Right: "/home/lwl/workspace/DataSet/MH02/mav0/cam1/data"
+
+Tracker.OptionsPath: "./config/tracker.yaml"

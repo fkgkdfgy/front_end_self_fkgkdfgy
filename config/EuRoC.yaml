@@ -5,6 +5,10 @@
 #--------------------------------------------------------------------------------------------
 Camera.type: "PinHole"
 
+Camera.bStereo: 1
+Camera.bCalibrate: 0
+
+
 # Camera calibration and distortion parameters (OpenCV) 
 Camera.fx: 435.2046959714599
 Camera.fy: 435.2046959714599

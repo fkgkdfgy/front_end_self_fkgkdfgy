@@ -1,22 +1,24 @@
 /*
  * @Author: Liu Weilong
  * @Date: 2021-01-05 08:26:18
- * @LastEditors: Liu Weilong 
- * @LastEditTime: 2021-01-06 19:09:33
+ * @LastEditors: Liu Weilong
+ * @LastEditTime: 2021-01-09 16:38:31
  * @Description: 
  */
+#pragma once
+
 #include <fstream>
 #include <iostream>
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
-#include "omp.h"
 
-#define _S_FRONT_END_SELF namespace front_end_self{
-#define _E_FRONT_END_SELF };
+
+#define _S_FRONT_END_SELF_ namespace front_end_self{
+#define _E_FRONT_END_SELF_ };
 
 using namespace std;
 
-_S_FRONT_END_SELF
+_S_FRONT_END_SELF_
 
 class DataLoader
 {
@@ -29,6 +31,7 @@ class DataLoader
     bool LoadImg(cv::Mat & img_l , cv::Mat & img_r);
 
     private:
+    
     const string all_path_;
 
     string index_file_;
@@ -99,9 +102,13 @@ bool DataLoader::LoadIndex(const string & index_file,
 
 bool DataLoader::LoadImg(cv::Mat & img_l , cv::Mat & img_r)
 {
+    if(cur_index_>=image_path_left_array_.size())
+    return false;
     img_l = cv::imread(image_path_left_array_[cur_index_],CV_LOAD_IMAGE_UNCHANGED);
     img_r = cv::imread(image_path_right_array_[cur_index_],CV_LOAD_IMAGE_UNCHANGED);
+    cur_index_ ++;
+    return true;
 }
 
 
-_E_FRONT_END_SELF
+_E_FRONT_END_SELF_
