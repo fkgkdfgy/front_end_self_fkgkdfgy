@@ -2,7 +2,7 @@
  * @Author: Liu Weilong
  * @Date: 2021-01-10 08:54:48
  * @LastEditors: Liu Weilong
- * @LastEditTime: 2021-01-10 12:37:55
+ * @LastEditTime: 2021-01-12 07:26:53
  * @Description: 
  */
 #pragma once
@@ -60,7 +60,6 @@ class PinholeCameraModel:public CameraModel
     
     virtual bool ProjectToPixel(const Point& point, UV & uv) override;
     virtual bool UnprojectFromPixel(const UV & uv, Point & point) override;
-
     PinholeCameraConfig * camera_config_;
 };
 

@@ -2,7 +2,7 @@
  * @Author: Liu Weilong
  * @Date: 2021-01-09 20:11:40
  * @LastEditors: Liu Weilong
- * @LastEditTime: 2021-01-10 08:54:24
+ * @LastEditTime: 2021-01-12 07:46:56
  * @Description:  TrackerInterface 确定接口和底层算法
  */
 #pragma once
@@ -11,7 +11,10 @@
 #include <iostream>
 
 #include "opencv2/core/core.hpp"
-#include "Eigen/Eigen"
+#include "eigen3/Eigen/Eigen"
+
+
+#include "frame.hpp"
 
 #define _S_FRONT_END_SELF_ namespace front_end_self{
 #define _E_FRONT_END_SELF_ };
@@ -27,8 +30,8 @@ class TrackerInterface
     using Rotation    = Eigen::Matrix<double,3,3>;
     using Translation = Eigen::Vector3d; 
 
-    Match(const cv::Mat & img_l,const cv::Mat & img_r,Transform & tf);    
-
-
+    virtual void Match( Frame & img_pre, Frame & img_cur,
+                       const Transform & predict_tf, Transform & tf) =0;   
+    Frame frame_pre;
 };
 _E_FRONT_END_SELF_
