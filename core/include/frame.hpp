@@ -2,7 +2,7 @@
  * @Author: Liu Weilong
  * @Date: 2021-01-09 19:50:36
  * @LastEditors: Liu Weilong
- * @LastEditTime: 2021-01-12 07:57:28
+ * @LastEditTime: 2021-01-13 07:55:44
  * @Description: 
  */
 
@@ -14,19 +14,35 @@
 
 _S_FRONT_END_SELF_
 
+
+
 class Frame
 {
     public:
 
-    Frame(cv::Mat img):img_(img){}
+    Frame(cv::Mat img_l,cv::Mat img_r):img_l_(img_l),img_r_(img_r){}
     
-    const cv::Mat GetImage()const {return img_;}
-    
+    cv::Mat & GetMask() {return mask_;}
 
+    const cv::Mat & GetImageL()const {return img_l_;}
+    const cv::Mat & GetImageR()const {return img_r_;}
+    
+    std::vector<cv::Point2f> & GetCornersUVL(){return pts_uv_l_;}
+    std::vector<cv::Point2f> & GetCornersUVR(){return pts_uv_r_;}
+    std::vector<cv::Point3f> & GetCornersUnProject(){return pts_un_;}
+    std::vector<cv::Point3f> & GetCornersXYZ(){return pts_xyz_;}
 
     private:
-    cv::Mat img_;
+    cv::Mat img_l_;
+    cv::Mat img_r_;
+    cv::Mat mask_;
+    std::vector<cv::Point2f> pts_uv_l_;
+    std::vector<cv::Point2f> pts_uv_r_;
+    std::vector<cv::Point3f> pts_un_;
+    std::vector<cv::Point3d> pts_xyz_;
+    std::vector<bool>        pts_tracking_;
 };
+
 
 
 

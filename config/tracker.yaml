@@ -1,2 +1,6 @@
 %YAML: 1.0
 ---
+OpenCVLKTracker.PyramidLevel: 5
+OpenCVLKTracker.TemplateSize: 21
+OpenCVLKTracker.MinDistance: 20 
+OpenCVLKTracker.MaxPts: 300
