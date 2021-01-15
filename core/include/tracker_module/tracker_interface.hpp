@@ -2,7 +2,7 @@
  * @Author: Liu Weilong
  * @Date: 2021-01-09 20:11:40
  * @LastEditors: Liu Weilong
- * @LastEditTime: 2021-01-13 08:04:33
+ * @LastEditTime: 2021-01-13 08:15:15
  * @Description:  TrackerInterface 确定接口和底层算法
  */
 #pragma once
@@ -33,14 +33,14 @@ class TrackerInterface
 
     virtual void Track( Frame & img_pre, Frame & img_cur,
                         const Transform & predict_tf, Transform & tf) =0;   
-    virtual Eigen::Matrix4d GetPredictPose() = 0;
+   
 
     static void EpipolarCheck(const features & f_uv_1, const features & f_uv_2, 
-                               std::vector<bool> & status, std::vector<float> & err);
+                               std::vector<bool> & status, std::vector<float> & err)=delete;
     static void Triangulate(const features & f_uv_1,const features & f_uv_2,
-                            std::vector<cv::Point3f> & f_xyz);
+                            std::vector<cv::Point3f> & f_xyz) = delete;
     static void PnP(const std::vector<cv::Point3f> & f_xyz_1 , const features & f_uv_2,
-                    Transform & result_tf, Transform predict_tf = Transform::Identity());
+                    Transform & result_tf, Transform predict_tf = Transform::Identity()) =delete;
 
     template<typename T>
     void CheckAndReduce(std::vector<T> & T_array,const std::vector<unsigned char> & status);

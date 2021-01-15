@@ -2,7 +2,7 @@
  * @Author: Liu Weilong
  * @Date: 2021-01-12 07:40:18
  * @LastEditors: Liu Weilong
- * @LastEditTime: 2021-01-13 08:08:55
+ * @LastEditTime: 2021-01-13 20:55:31
  * @Description: 
  */
 #include "tracker_interface.hpp"
@@ -52,7 +52,7 @@ class OpenCVLKTracker:public TrackerInterface
     private:
     
     void TrackWithOpticalLK(Frame & img_pre, Frame & img_cur);
-    
+
     OpenCVLKTrackerOptions options_;
     
 
@@ -64,22 +64,13 @@ void OpenCVLKTracker::Track( Frame & img_pre, Frame & img_cur,
 {
     if(img_pre.GetCornersUVL().size()==0)
         StereoCompute(img_pre);
-
     TrackWithOpticalLK(img_pre,img_cur);
-
-    Eigen::Matrix4d tf = Eigen::Matrix4d::Identity();
-    PnP(img_pre.GetCornersXYZ(),img_cur.GetCornersUVL(),tf);
-    
-    
-
-   
     
 }
 
 void OpenCVLKTracker::StereoCompute(Frame & frame)
 {
     TrackWithOpticalLK(frame,frame);
-    
     
 }
 
